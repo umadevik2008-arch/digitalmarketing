@@ -1,0 +1,326 @@
+/* Simple base styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #0b1120;
+  color: #f9fafb;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header */
+.site-header {
+  background-image:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.92)),
+    url("images/banner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.6);
+  padding: 1.75rem 0 2.25rem;
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #f9fafb;
+}
+
+.title-group {
+  flex: 1;
+  text-align: left;
+}
+
+.title-group h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+}
+
+.title-group p {
+  margin: 0;
+  color: #e5e7eb;
+  font-size: 0.98rem;
+}
+
+.hero-subheading {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  color: #e5e7eb;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nav-link:hover {
+  color: #22c55e;
+}
+
+.main-nav--below {
+  justify-content: flex-end;
+  padding: 0.6rem 1.5rem 0.6rem;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.45);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
+}
+
+.hero-subheading h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #f9fafb;
+}
+
+.hero-media {
+  display: none;
+}
+
+.feature-section {
+  margin-top: 2.5rem;
+  padding: 0 1rem 3rem;
+}
+
+.feature-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.5rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  flex: 1;
+  max-width: 320px;
+  background:
+    radial-gradient(circle at top left, rgba(34, 197, 94, 0.08), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.08), transparent 55%),
+    rgba(15, 23, 42, 0.98);
+  border-radius: 0.75rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out;
+  box-shadow:
+    0 22px 45px rgba(15, 23, 42, 0.9),
+    0 0 0 1px rgba(15, 23, 42, 0.9);
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(190, 242, 100, 0.7);
+  box-shadow:
+    0 30px 60px rgba(15, 23, 42, 0.95),
+    0 0 22px rgba(52, 211, 153, 0.6);
+}
+
+.feature-icon {
+  width: 100%;
+  max-height: 180px;
+  margin: 0 0 1rem;
+  border-radius: 0;
+  object-fit: cover;
+  border: none;
+  background: none;
+}
+
+/* Slight boost for 3rd card image to visually balance sizes */
+.feature-card:nth-child(3) .feature-icon {
+  max-height: 210px;
+  object-position: center top;
+}
+
+.feature-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.feature-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #e5e7eb;
+  line-height: 1.5;
+}
+
+.feature-button {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background:
+    linear-gradient(135deg, #4ade80, #22c55e, #16a34a);
+  color: #0b1120;
+  box-shadow:
+    0 0 18px rgba(34, 197, 94, 0.55),
+    0 14px 30px rgba(15, 23, 42, 0.9);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.feature-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(34, 197, 94, 0.6);
+}
+
+.feature-button:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 24px rgba(34, 197, 94, 0.45);
+}
+
+.site-footer {
+  border-top: 1px solid rgba(15, 23, 42, 0.9);
+  background: radial-gradient(circle at top, rgba(34, 197, 94, 0.1), transparent),
+    #020617;
+  padding: 2rem 0 2.5rem;
+  margin-top: 1.5rem;
+}
+
+.footer-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-logo-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.9);
+}
+
+.footer-brand-name {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  color: #e5e7eb;
+}
+
+.footer-text {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.footer-copy {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0.75rem 0 0.75rem;
+}
+
+.footer-social-link {
+  text-decoration: none;
+}
+
+.footer-social-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  box-shadow: 0 0 14px rgba(15, 23, 42, 0.7);
+}
+
+/* Simple responsive */
+@media (max-width: 768px) {
+  .header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title-group {
+    text-align: left;
+  }
+
+  .feature-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
