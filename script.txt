@@ -1,0 +1,52 @@
+/**
+ * Google Apps Script to save form data to a Google Sheet.
+ * 1. Open your Google Sheet.
+ * 2. Click Extensions > Apps Script.
+ * 3. Delete any existing code and paste this in.
+ * 4. Save and name it 'Form submission'.
+ * 5. Click 'Deploy' > 'New deployment'.
+ * 6. Select 'Web app' as type.
+ * 7. Set 'Who has access' to 'Anyone'.
+ * 8. Deploy and copy the URL.
+ * 
+ * IMPORTANT: Make sure your Sheet header names (Row 1) match the 'name' attributes in your HTML form!
+ * They are case-sensitive: name, email, contactno, servicecategory, project_details, date
+ */
+
+const sheetName = 'Sheet1'; // Change this if your sheet name is different
+
+function doPost(e) {
+  const lock = LockService.getScriptLock();
+  lock.tryLock(10000); // Wait for 10 seconds for others' use of the script
+
+  try {
+    const doc = SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = doc.getSheetByName(sheetName);
+
+    // Get the first row (headers)
+    const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    const nextRow = sheet.getLastRow() + 1;
+
+    // Create an array with values from the form in the order of headers
+    const newRow = headers.map(function(header) {
+      if (header === 'timestamp') {
+        return new Date(); // Adds a timestamp automatically if the header is named "timestamp"
+      }
+      return e.parameter[header] || ''; // Gets the form field value by header name
+    });
+
+    // Write the new row to the sheet
+    sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow]);
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ "result": "success", "row": nextRow }))
+      .setMimeType(ContentService.MimeType.JSON);
+    
+  } catch (error) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ "result": "error", "error": error.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
+  }
+}
