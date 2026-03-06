@@ -940,7 +940,7 @@ body.home-page.light-theme .nav-link:hover {
 .why-choose-list li {
   display: flex;
   align-items: flex-start;
-  gap: 0.8rem;
+  gap: 0.75rem;
   font-size: 1.1rem;
   color: #e5e7eb;
   font-weight: 600;
@@ -948,7 +948,8 @@ body.home-page.light-theme .nav-link:hover {
 }
 
 .why-choose-list .bullet-icon {
-  margin-top: 0.15rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
 }
 
 /* Specific Responsive for Why Choose Us */
@@ -963,6 +964,12 @@ body.home-page.light-theme .nav-link:hover {
     flex: 0 0 100%;
     width: 100%;
     text-align: center;
+  }
+
+  .why-choose-list {
+    align-items: flex-start;
+    margin: 0 auto;
+    width: fit-content;
   }
 }
 
@@ -1372,6 +1379,7 @@ body.lite-theme {
   font-size: 0.9rem;
   color: #94a3b8;
 }
+
 /* Premium Ad Popup Styles */
 #adPopup {
   display: none;
@@ -1443,6 +1451,7 @@ body.lite-theme {
     transform: translateY(100%);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -1456,7 +1465,7 @@ body.lite-theme {
     right: 5%;
     bottom: 10px;
   }
-} 
+}
 
 /* Premium Full-Screen Modal Styles */
 .modal-overlay {
@@ -1541,8 +1550,13 @@ body.lite-theme {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1551,10 +1565,11 @@ body.lite-theme {
     margin: 20px auto;
     padding: 20px;
   }
+
   .modal-title-text {
     font-size: 1.4rem;
   }
-} 
+}
 
 /* Premium Email Strategy Modal Styles */
 .strategy-grid {
@@ -1646,4 +1661,38 @@ body.lite-theme {
   .strategy-grid {
     grid-template-columns: 1fr;
   }
-} 
+}
+
+/* Fix for CTA Section on Mobile */
+@media (max-width: 768px) {
+  .cta-card {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .cta-banner-image {
+    order: 2 !important;
+    height: auto !important;
+    min-height: 250px !important;
+    object-position: center !important;
+  }
+
+  .cta-overlay-left {
+    order: 1 !important;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    background: rgba(11, 17, 32, 0.95) !important;
+    padding: 2.5rem 1.5rem !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .cta-benefits-list {
+    align-items: flex-start !important;
+    margin: 0 auto 2rem !important;
+    width: fit-content !important;
+  }
+}
